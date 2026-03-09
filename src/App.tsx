@@ -34,6 +34,6 @@ export default function App() {
           <Route path="advanced-ui" element={<AdvancedUI />} />
         </Route>
       </Routes>
-    <HashRouter>
+    </HashRouter> // Fixed: Added the '/' here
   );
 }
