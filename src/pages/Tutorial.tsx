@@ -188,6 +188,62 @@ WebUI.verifyElementChecked(radioNever, 5)
 WebUI.delay(3)
 
 WebUI.closeBrowser()`
+  },
+  {
+    id: 'checkbox',
+    title: 'Lesson 6: Selecting Checkboxes',
+    description: 'Learn how to interact with checkboxes and verify their selection state.',
+    element: (
+      <div className="my-4 p-4 border rounded-lg bg-white">
+        <p className="block text-sm font-medium text-slate-700 mb-2">What illness(es) do you think you will suffer this week?</p>
+        <div className="space-y-2">
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-arteritis" name="illness" value="arteritis" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-arteritis" className="ml-2 text-sm text-slate-700">Arteritis</label>
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-cancer" name="illness" value="cancer" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-cancer" className="ml-2 text-sm text-slate-700">Cancer</label>
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-covid" name="illness" value="covid" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-covid" className="ml-2 text-sm text-slate-700">Covid</label>
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-flu" name="illness" value="flu" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-flu" className="ml-2 text-sm text-slate-700">Flu</label>
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-pregnancy" name="illness" value="pregnancy" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-pregnancy" className="ml-2 text-sm text-slate-700">Pregnancy</label>
+          </div>
+          <div className="flex items-center">
+            <input type="checkbox" id="checkbox-tinea-pedis" name="illness" value="tinea-pedis" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
+            <label htmlFor="checkbox-tinea-pedis" className="ml-2 text-sm text-slate-700">Tinea Pedis</label>
+          </div>
+        </div>
+      </div>
+    ),
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def lesson6 = new TestObject()
+lesson6.addProperty('xpath', ConditionType.EQUALS, "//h2[contains(text(), 'Lesson 6: Selecting Checkboxes')]")
+WebUI.click(lesson6)
+
+def checkboxCovid = new TestObject()
+checkboxCovid.addProperty('xpath', ConditionType.EQUALS, "//input[@id='checkbox-covid']")
+WebUI.check(checkboxCovid)
+
+WebUI.verifyElementChecked(checkboxCovid, 5)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
   }
 ];
 
