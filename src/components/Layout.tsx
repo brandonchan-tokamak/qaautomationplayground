@@ -92,7 +92,7 @@ export default function Layout() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row transition-colors duration-200">
       {/* Mobile Header */}
       <div className="md:hidden bg-indigo-600 dark:bg-indigo-800 text-white p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">QA Team's Automation Playground</h1>
+        <h1 className="text-xl font-bold">QA Playground</h1>
         <div className="flex items-center gap-4">
           <button onClick={toggleDarkMode} className="p-1">
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -112,9 +112,7 @@ export default function Layout() {
       >
         <div className="p-6 hidden md:block">
           <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            QA Team's
-            <br />
-            Automation Playground
+            QA Playground
           </h1>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Lai Lai practice your skills</p>
         </div>
