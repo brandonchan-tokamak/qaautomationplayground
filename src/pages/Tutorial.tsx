@@ -12,17 +12,20 @@ const lessons = [
         <input id="tutorial-name" type="text" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Enter your name" />
       </div>
     ),
-    script: `import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
 
-// Navigate to the page
-WebUI.navigateToUrl('http://localhost:3000/tutorial')
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
 
-// Set text in the textbox
-WebUI.setText(findTestObject('Object Repository/Tutorial/input_Name'), 'John Doe')
+WebUI.maximizeWindow()
 
-// Verify the text was entered
-WebUI.verifyAttributeValue(findTestObject('Object Repository/Tutorial/input_Name'), 'value', 'John Doe', 5)`
+WebDriver driver = com.kms.katalon.core.webui.driver.DriverFactory.getWebDriver()
+driver.findElement(By.id('tutorial-name')).sendKeys('John Doe')
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
   },
   {
     id: 'button-click',
@@ -35,17 +38,22 @@ WebUI.verifyAttributeValue(findTestObject('Object Repository/Tutorial/input_Name
         </button>
       </div>
     ),
-    script: `import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
 
-// Navigate to the page
-WebUI.navigateToUrl('http://localhost:3000/tutorial')
+WebUI.openBrowser('')
+WebUI.maximizeWindow()
+WebUI.navigateToUrl('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
 
-// Click the button
-WebUI.click(findTestObject('Object Repository/Tutorial/btn_ClickMe'))
+WebDriver driver = com.kms.katalon.core.webui.driver.DriverFactory.getWebDriver()
 
-// Handle the alert (if any)
-WebUI.acceptAlert()`
+driver.findElement(By.xpath('//h2[text()="Lesson 2: Clicking a Button"]')).click()
+driver.findElement(By.id('tutorial-button')).click()
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
   },
   {
     id: 'dropdown',
@@ -132,8 +140,8 @@ export default function Tutorial() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Tutorial</h1>
-        <p className="text-slate-600 mt-2">Step-by-step guides to automate common UI elements using Katalon Studio.</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Tutorial</h1>
+        <p className="text-slate-600 dark:text-slate-300 mt-2">Step-by-step guides to automate common UI elements using Katalon Studio.</p>
       </div>
 
       <div className="space-y-4">

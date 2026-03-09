@@ -46,7 +46,7 @@ export default function WaitConditions() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Wait Conditions</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Wait Conditions</h1>
         <p className="text-slate-600 mt-2">
           Practice waiting for elements to appear, disappear, or change state.
         </p>
@@ -55,7 +55,7 @@ export default function WaitConditions() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Delayed Alert */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Delayed Alert</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Delayed Alert</h2>
           <p className="text-sm text-slate-500 mb-4">
             Click the button and wait 3 seconds for an alert to appear.
           </p>
@@ -84,7 +84,7 @@ export default function WaitConditions() {
 
         {/* Delayed Text */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Delayed Text</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Delayed Text</h2>
           <p className="text-sm text-slate-500 mb-4">
             Click the button and wait 5 seconds for text to appear.
           </p>
@@ -107,7 +107,7 @@ export default function WaitConditions() {
 
         {/* Enable Button */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Enable Button</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Enable Button</h2>
           <p className="text-sm text-slate-500 mb-4">
             Click the first button to enable the second button after 4 seconds.
           </p>
@@ -135,7 +135,7 @@ export default function WaitConditions() {
 
         {/* Progress Bar */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Progress Bar</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Progress Bar</h2>
           <p className="text-sm text-slate-500 mb-4">
             Wait for the progress bar to reach 100%.
           </p>

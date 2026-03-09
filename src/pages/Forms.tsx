@@ -43,7 +43,7 @@ export default function Forms() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Forms</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Forms</h1>
         <p className="text-slate-600 mt-2">
           Fill out complex forms with various input types.
         </p>
@@ -52,7 +52,7 @@ export default function Forms() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Form Container */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-6">Registration Form</h2>
+          <h2 className="text-xl font-semibold mb-6 dark:text-white">Registration Form</h2>
 
           <form
             id="registration-form"
@@ -256,7 +256,7 @@ export default function Forms() {
 
         {/* Result Container */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-fit sticky top-8">
-          <h2 className="text-xl font-semibold mb-4">Form Data</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Form Data</h2>
           <p className="text-sm text-slate-500 mb-4">
             The submitted data will appear here.
           </p>

@@ -29,7 +29,7 @@ export default function PopupWindows() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
           Popup Windows & Alerts
         </h1>
         <p className="text-slate-600 mt-2">
@@ -40,7 +40,7 @@ export default function PopupWindows() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Browser Windows */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Browser Windows</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Browser Windows</h2>
           <p className="text-sm text-slate-500 mb-4">
             Open links in new tabs or windows.
           </p>
@@ -64,7 +64,7 @@ export default function PopupWindows() {
 
         {/* Native Dialogs */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Native Dialogs</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Native Dialogs</h2>
           <p className="text-sm text-slate-500 mb-4">
             Interact with browser alerts, confirms, and prompts.
           </p>

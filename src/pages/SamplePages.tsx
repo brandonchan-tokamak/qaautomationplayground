@@ -38,7 +38,7 @@ export default function SamplePages() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Sample Pages</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Sample Pages</h1>
         <p className="text-slate-600 mt-2">
           Complete end-to-end flows like login and registration.
         </p>
@@ -80,7 +80,7 @@ export default function SamplePages() {
               className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-300"
             >
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   Welcome Back
                 </h2>
                 <p className="text-sm text-slate-500 mt-1">
@@ -171,7 +171,7 @@ export default function SamplePages() {
               className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300"
             >
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   Create Account
                 </h2>
                 <p className="text-sm text-slate-500 mt-1">

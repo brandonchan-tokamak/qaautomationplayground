@@ -23,7 +23,7 @@ export default function MouseActions() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Mouse Actions</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Mouse Actions</h1>
         <p className="text-slate-600 mt-2">
           Practice clicks, double-clicks, right-clicks, and hover effects.
         </p>
@@ -32,7 +32,7 @@ export default function MouseActions() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Click Types */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Click Types</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Click Types</h2>
           <p className="text-sm text-slate-500 mb-4">
             Test different types of mouse clicks.
           </p>
@@ -68,7 +68,7 @@ export default function MouseActions() {
 
         {/* Hover Action */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Hover Action</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Hover Action</h2>
           <p className="text-sm text-slate-500 mb-4">
             Hover over the element to reveal hidden content.
           </p>
@@ -92,7 +92,7 @@ export default function MouseActions() {
 
         {/* Drag and Drop (Simple) */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2">
-          <h2 className="text-xl font-semibold mb-4">Simple Drag & Drop</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Simple Drag & Drop</h2>
           <p className="text-sm text-slate-500 mb-4">
             Drag the item into the drop zone.
           </p>

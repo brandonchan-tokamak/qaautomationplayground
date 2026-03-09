@@ -77,7 +77,7 @@ export default function AdvancedUI() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
           Advanced UI Features
         </h1>
         <p className="text-slate-600 mt-2">
@@ -89,7 +89,7 @@ export default function AdvancedUI() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Dynamic ID */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Dynamic ID</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Dynamic ID</h2>
           <p className="text-sm text-slate-500 mb-4">
             The ID of the button below changes every 3 seconds. Use CSS
             selectors or XPath to find it.
@@ -113,7 +113,7 @@ export default function AdvancedUI() {
 
         {/* Shadow DOM */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Shadow DOM</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Shadow DOM</h2>
           <p className="text-sm text-slate-500 mb-4">
             Interact with elements hidden inside a Shadow Root.
           </p>
@@ -131,7 +131,7 @@ export default function AdvancedUI() {
 
         {/* Star Rating (Custom Component) */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2">
-          <h2 className="text-xl font-semibold mb-4">Star Rating</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Star Rating</h2>
           <p className="text-sm text-slate-500 mb-4">
             Interact with a custom UI component that doesn't use standard
             inputs.

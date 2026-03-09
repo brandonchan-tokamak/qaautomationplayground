@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import WaitConditions from "./pages/WaitConditions";
@@ -16,7 +16,7 @@ import Search from "./pages/Search";
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/iframe-content" element={<IframeContent />} />
         <Route path="/" element={<Layout />}>
@@ -34,6 +34,6 @@ export default function App() {
           <Route path="advanced-ui" element={<AdvancedUI />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

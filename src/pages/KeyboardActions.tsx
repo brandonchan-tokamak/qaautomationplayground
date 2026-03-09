@@ -30,7 +30,7 @@ export default function KeyboardActions() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Keyboard Actions</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Keyboard Actions</h1>
         <p className="text-slate-600 mt-2">
           Test typing, special keys, and keyboard shortcuts.
         </p>
@@ -39,7 +39,7 @@ export default function KeyboardActions() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Simple Typing */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Simple Typing</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Simple Typing</h2>
           <p className="text-sm text-slate-500 mb-4">
             Type text into the input field and verify the output below.
           </p>
@@ -60,7 +60,7 @@ export default function KeyboardActions() {
 
         {/* Special Keys */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <h2 className="text-xl font-semibold mb-4">Special Keys</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Special Keys</h2>
           <p className="text-sm text-slate-500 mb-4">
             Press special keys (Enter, Esc, Tab, Arrows) in the input field.
           </p>
@@ -80,7 +80,7 @@ export default function KeyboardActions() {
 
         {/* Keyboard Shortcuts */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2">
-          <h2 className="text-xl font-semibold mb-4">Keyboard Shortcuts</h2>
+          <h2 className="text-xl font-semibold mb-4 dark:text-white">Keyboard Shortcuts</h2>
           <p className="text-sm text-slate-500 mb-4">
             Try combinations like Ctrl+C, Ctrl+V, Alt+S, or Shift+A.
           </p>

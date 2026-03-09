@@ -1,7 +1,7 @@
 export default function IframeContent() {
   return (
     <div className="p-8 bg-indigo-50 min-h-screen">
-      <h1 className="text-2xl font-bold text-indigo-900 mb-4">
+      <h1 className="text-2xl font-bold text-indigo-900 dark:text-indigo-300 mb-4">
         Iframe Content
       </h1>
       <p className="text-indigo-700 mb-6">
