@@ -42,9 +42,8 @@ WebUI.closeBrowser()`
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 
-WebUI.openBrowser('')
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
 WebUI.maximizeWindow()
-WebUI.navigateToUrl('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
 
 WebDriver driver = com.kms.katalon.core.webui.driver.DriverFactory.getWebDriver()
 
@@ -61,25 +60,36 @@ WebUI.closeBrowser()`
     description: 'Learn how to select an option from a dropdown menu by its visible text.',
     element: (
       <div className="my-4 p-4 border rounded-lg bg-white">
-        <label htmlFor="tutorial-dropdown" className="block text-sm font-medium text-slate-700 mb-1">Select an option</label>
+        <label htmlFor="tutorial-dropdown" className="block text-sm font-medium text-slate-700 mb-1">Who do you think will be taking MC this week?</label>
         <select id="tutorial-dropdown" className="w-full px-4 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 outline-none">
           <option value="">Choose...</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
+          <option value="brandon">Brandon</option>
+          <option value="kai-ting">Kai Ting</option>
+          <option value="kelvin">Kelvin</option>
+          <option value="kenneth">Kenneth</option>
+          <option value="pei-ru">Pei Ru</option>
+          <option value="perry">Perry</option>
         </select>
       </div>
     ),
-    script: `import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
 
-// Navigate to the page
-WebUI.navigateToUrl('http://localhost:3000/tutorial')
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
 
-// Select option by visible text
-WebUI.selectOptionByLabel(findTestObject('Object Repository/Tutorial/select_Dropdown'), 'Option 2', false)
+def lesson3 = new TestObject()
+lesson3.addProperty('xpath', ConditionType.EQUALS, "//h2[contains(text(), 'Lesson 3: Selecting from a Dropdown')]")
+WebUI.click(lesson3)
 
-// Verify the selected option
-WebUI.verifyOptionSelectedByLabel(findTestObject('Object Repository/Tutorial/select_Dropdown'), 'Option 2', false, 5)`
+def dropdown = new TestObject()
+dropdown.addProperty('xpath', ConditionType.EQUALS, "//select[@id='tutorial-dropdown']")
+WebUI.selectOptionByValue(dropdown, 'Brandon', false)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
   },
   {
     id: 'wait',
@@ -140,8 +150,8 @@ export default function Tutorial() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Tutorial</h1>
-        <p className="text-slate-600 dark:text-slate-300 mt-2">Step-by-step guides to automate common UI elements using Katalon Studio.</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Automation Tutorial</h1>
+        <p className="text-slate-600 dark:text-slate-300 mt-2">Step-by-step guides to automate common UI elements using Katalon Studio. All scripts must be written using Katalon Studio</p>
       </div>
 
       <div className="space-y-4">
