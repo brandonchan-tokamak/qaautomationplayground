@@ -85,7 +85,7 @@ WebUI.click(lesson3)
 
 def dropdown = new TestObject()
 dropdown.addProperty('xpath', ConditionType.EQUALS, "//select[@id='tutorial-dropdown']")
-WebUI.selectOptionByValue(dropdown, 'Brandon', false)
+WebUI.selectOptionByValue(dropdown, 'brandon', false)
 
 WebUI.delay(3)
 
@@ -118,20 +118,76 @@ WebUI.closeBrowser()`
         </button>
       </div>
     ),
-    script: `import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
 
-// Navigate to the page
-WebUI.navigateToUrl('http://localhost:3000/tutorial')
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
 
-// Click the button to start action
-WebUI.click(findTestObject('Object Repository/Tutorial/btn_StartAction'))
+def lesson4 = new TestObject()
+lesson4.addProperty('xpath', ConditionType.EQUALS, "//h2[contains(text(), 'Lesson 4: Waiting for an Element')]")
+WebUI.click(lesson4)
 
-// Wait for the success message to be visible (up to 10 seconds)
-WebUI.waitForElementVisible(findTestObject('Object Repository/Tutorial/msg_Success'), 10)
+def startBtn = new TestObject()
+startBtn.addProperty('xpath', ConditionType.EQUALS, "//*[@id='tutorial-wait-btn']")
+WebUI.click(startBtn)
 
-// Verify the message text
-WebUI.verifyElementText(findTestObject('Object Repository/Tutorial/msg_Success'), 'Action completed successfully!')`
+def successMsg = new TestObject()
+successMsg.addProperty('xpath', ConditionType.EQUALS, "//*[contains(text(), 'Action completed successfully!')]")
+WebUI.waitForElementVisible(successMsg, 10)
+
+WebUI.verifyElementText(successMsg, 'Action completed successfully!')
+
+WebUI.closeBrowser()`
+  },
+  {
+    id: 'radio',
+    title: 'Lesson 5: Selecting Radio Buttons',
+    description: 'Learn how to interact with radio buttons and verify their selection state.',
+    element: (
+      <div className="my-4 p-4 border rounded-lg bg-white">
+        <p className="block text-sm font-medium text-slate-700 mb-2">What is your preferred time to knock off from work?</p>
+        <div className="space-y-2">
+          <div className="flex items-center">
+            <input type="radio" id="radio-9am" name="knockoff" value="9am" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
+            <label htmlFor="radio-9am" className="ml-2 text-sm text-slate-700">9am</label>
+          </div>
+          <div className="flex items-center">
+            <input type="radio" id="radio-1pm" name="knockoff" value="1pm" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
+            <label htmlFor="radio-1pm" className="ml-2 text-sm text-slate-700">1pm</label>
+          </div>
+          <div className="flex items-center">
+            <input type="radio" id="radio-6pm" name="knockoff" value="6pm" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
+            <label htmlFor="radio-6pm" className="ml-2 text-sm text-slate-700">6pm</label>
+          </div>
+          <div className="flex items-center">
+            <input type="radio" id="radio-never" name="knockoff" value="never" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
+            <label htmlFor="radio-never" className="ml-2 text-sm text-slate-700">I do not even want to turn up for work</label>
+          </div>
+        </div>
+      </div>
+    ),
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def lesson5 = new TestObject()
+lesson5.addProperty('xpath', ConditionType.EQUALS, "//h2[contains(text(), 'Lesson 5: Selecting Radio Buttons')]")
+WebUI.click(lesson5)
+
+def radioNever = new TestObject()
+radioNever.addProperty('xpath', ConditionType.EQUALS, "//input[@id='radio-never']")
+WebUI.click(radioNever)
+
+WebUI.verifyElementChecked(radioNever, 5)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
   }
 ];
 
