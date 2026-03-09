@@ -16,7 +16,7 @@ import Search from "./pages/Search";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/qaautomationplayground/">
       <Routes>
         <Route path="/iframe-content" element={<IframeContent />} />
         <Route path="/" element={<Layout />}>
