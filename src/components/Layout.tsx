@@ -11,17 +11,22 @@ import {
   Wand2,
   Menu,
   X,
-  GraduationCap,
+  Trophy,
+  BookOpen,
   Table,
   Search,
   Moon,
-  Sun
+  Sun,
+  UploadCloud,
+  ShieldCheck
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { trackPageView, trackUserVisit, isAdminLoggedIn } from "../utils/tracking";
 
 const navItems = [
   { path: "/", label: "Home", icon: Home },
-  { path: "/tutorial", label: "Tutorial", icon: GraduationCap },
+  { path: "/learn", label: "Learn", icon: BookOpen },
+  { path: "/tutorial", label: "Challenge", icon: Trophy },
   { path: "/tables", label: "Tables", icon: Table },
   { path: "/search", label: "Search", icon: Search },
   { path: "/wait-conditions", label: "Wait Conditions", icon: Clock },
@@ -30,6 +35,7 @@ const navItems = [
   { path: "/popup-windows", label: "Popup Windows", icon: AppWindow },
   { path: "/frames", label: "Frames", icon: LayoutTemplate },
   { path: "/forms", label: "Forms", icon: FileText },
+  { path: "/upload-download", label: "Upload & Download", icon: UploadCloud },
   { path: "/sample-pages", label: "Sample Pages", icon: UserCircle },
   { path: "/advanced-ui", label: "Advanced UI", icon: Wand2 },
 ];
@@ -37,6 +43,7 @@ const navItems = [
 export default function Layout() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(isAdminLoggedIn());
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return document.documentElement.classList.contains('dark') || 
@@ -44,6 +51,27 @@ export default function Layout() {
     }
     return false;
   });
+
+  useEffect(() => {
+    trackUserVisit();
+  }, []);
+
+  useEffect(() => {
+    const currentItem = navItems.find(item => item.path === location.pathname);
+    if (currentItem) {
+      trackPageView(currentItem.label);
+    } else if (location.pathname === '/admin') {
+      // Don't track admin page views as per requirement
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsAdmin(isAdminLoggedIn());
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -54,6 +82,11 @@ export default function Layout() {
   }, [isDarkMode]);
 
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+
+  const displayNavItems = [...navItems];
+  if (isAdmin) {
+    displayNavItems.push({ path: "/admin", label: "Admin", icon: ShieldCheck });
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col md:flex-row transition-colors duration-200">
@@ -105,7 +138,7 @@ export default function Layout() {
         </div>
 
         <nav className="px-4 pb-4 space-y-1 flex-1 overflow-y-auto">
-          {navItems.map((item) => {
+          {displayNavItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (

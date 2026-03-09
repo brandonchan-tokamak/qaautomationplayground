@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { loginAdmin } from "../utils/tracking";
 
 export default function SamplePages() {
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
@@ -12,7 +13,12 @@ export default function SamplePages() {
     const password = (form.elements.namedItem("password") as HTMLInputElement)
       .value;
 
-    if (email === "admin@example.com" && password === "admin123") {
+    if (email === "admin@gmail.com" && password === "rachellove1") {
+      loginAdmin();
+      setLoginStatus("admin_success");
+      // Trigger a storage event so Layout can update
+      window.dispatchEvent(new Event('storage'));
+    } else if (email === "admin@example.com" && password === "admin123") {
       setLoginStatus("success");
     } else {
       setLoginStatus("error");
@@ -102,6 +108,14 @@ export default function SamplePages() {
                   className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg text-sm text-center"
                 >
                   Login successful! Welcome back.
+                </div>
+              )}
+              {loginStatus === "admin_success" && (
+                <div
+                  id="login-admin-success"
+                  className="p-3 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg text-sm text-center font-medium"
+                >
+                  Secret menu unlocked!
                 </div>
               )}
 

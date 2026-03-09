@@ -13,6 +13,9 @@ import IframeContent from "./pages/IframeContent";
 import Tutorial from "./pages/Tutorial";
 import Tables from "./pages/Tables";
 import Search from "./pages/Search";
+import UploadDownload from "./pages/UploadDownload";
+import Admin from "./pages/Admin";
+import Learn from "./pages/Learn";
 
 export default function App() {
   return (
@@ -22,6 +25,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="tutorial" element={<Tutorial />} />
+          <Route path="learn" element={<Learn />} />
           <Route path="tables" element={<Tables />} />
           <Route path="search" element={<Search />} />
           <Route path="wait-conditions" element={<WaitConditions />} />
@@ -32,6 +36,8 @@ export default function App() {
           <Route path="forms" element={<Forms />} />
           <Route path="sample-pages" element={<SamplePages />} />
           <Route path="advanced-ui" element={<AdvancedUI />} />
+          <Route path="upload-download" element={<UploadDownload />} />
+          <Route path="admin" element={<Admin />} />
         </Route>
       </Routes>
     </HashRouter> // Fixed: Added the '/' here

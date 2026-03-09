@@ -9,17 +9,25 @@ import {
   UserCircle,
   Wand2,
   ArrowRight,
-  GraduationCap,
+  Trophy,
+  BookOpen,
   Table,
   Search
 } from "lucide-react";
 
 const categories = [
   {
+    path: "/learn",
+    label: "Learn",
+    description: "Learn how to identify elements and interact with them.",
+    icon: BookOpen,
+    color: "bg-purple-500",
+  },
+  {
     path: "/tutorial",
-    label: "Tutorial",
+    label: "Challenge",
     description: "Step-by-step guides to automate common UI elements.",
-    icon: GraduationCap,
+    icon: Trophy,
     color: "bg-indigo-500",
   },
   {
