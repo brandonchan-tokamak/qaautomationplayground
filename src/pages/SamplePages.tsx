@@ -50,16 +50,16 @@ export default function SamplePages() {
         </p>
       </div>
 
-      <div className="max-w-md mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="max-w-md mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         {/* Tabs */}
-        <div className="flex border-b border-slate-200">
+        <div className="flex border-b border-slate-200 dark:border-slate-700">
           <button
             id="tab-login"
             onClick={() => setActiveTab("login")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "login"
-                ? "text-indigo-600 border-b-2 border-indigo-600"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+                ? "text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400"
+                : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/50"
             }`}
           >
             Login
@@ -69,8 +69,8 @@ export default function SamplePages() {
             onClick={() => setActiveTab("register")}
             className={`flex-1 py-4 text-center font-medium transition-colors ${
               activeTab === "register"
-                ? "text-indigo-600 border-b-2 border-indigo-600"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+                ? "text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400"
+                : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/50"
             }`}
           >
             Register
@@ -89,7 +89,7 @@ export default function SamplePages() {
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   Welcome Back
                 </h2>
-                <p className="text-sm text-slate-500 mt-1">
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                   Use admin@example.com / admin123 to login
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function SamplePages() {
               {loginStatus === "error" && (
                 <div
                   id="login-error"
-                  className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-lg text-sm text-center"
+                  className="p-3 bg-rose-50 dark:bg-rose-900/30 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-400 rounded-lg text-sm text-center"
                 >
                   Invalid email or password.
                 </div>
@@ -105,7 +105,7 @@ export default function SamplePages() {
               {loginStatus === "success" && (
                 <div
                   id="login-success"
-                  className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg text-sm text-center"
+                  className="p-3 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 rounded-lg text-sm text-center"
                 >
                   Login successful! Welcome back.
                 </div>
@@ -113,7 +113,7 @@ export default function SamplePages() {
               {loginStatus === "admin_success" && (
                 <div
                   id="login-admin-success"
-                  className="p-3 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-lg text-sm text-center font-medium"
+                  className="p-3 bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 rounded-lg text-sm text-center font-medium"
                 >
                   Secret menu unlocked!
                 </div>
@@ -122,7 +122,7 @@ export default function SamplePages() {
               <div>
                 <label
                   htmlFor="login-email"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Email
                 </label>
@@ -130,7 +130,7 @@ export default function SamplePages() {
                   id="login-email"
                   name="email"
                   type="email"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
@@ -138,13 +138,13 @@ export default function SamplePages() {
                 <div className="flex justify-between items-center mb-1">
                   <label
                     htmlFor="login-password"
-                    className="block text-sm font-medium text-slate-700"
+                    className="block text-sm font-medium text-slate-700 dark:text-slate-300"
                   >
                     Password
                   </label>
                   <a
                     href="#"
-                    className="text-xs text-indigo-600 hover:text-indigo-800"
+                    className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300"
                   >
                     Forgot password?
                   </a>
@@ -153,7 +153,7 @@ export default function SamplePages() {
                   id="login-password"
                   name="password"
                   type="password"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
@@ -161,9 +161,9 @@ export default function SamplePages() {
                 <input
                   type="checkbox"
                   id="remember-me"
-                  className="rounded text-indigo-600 focus:ring-indigo-500"
+                  className="rounded text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                 />
-                <label htmlFor="remember-me" className="text-sm text-slate-700">
+                <label htmlFor="remember-me" className="text-sm text-slate-700 dark:text-slate-300">
                   Remember me
                 </label>
               </div>
@@ -188,7 +188,7 @@ export default function SamplePages() {
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                   Create Account
                 </h2>
-                <p className="text-sm text-slate-500 mt-1">
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                   Join us today! It's free and easy.
                 </p>
               </div>
@@ -196,7 +196,7 @@ export default function SamplePages() {
               {registerStatus === "error" && (
                 <div
                   id="register-error"
-                  className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-lg text-sm text-center"
+                  className="p-3 bg-rose-50 dark:bg-rose-900/30 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-400 rounded-lg text-sm text-center"
                 >
                   Passwords do not match.
                 </div>
@@ -204,7 +204,7 @@ export default function SamplePages() {
               {registerStatus === "success" && (
                 <div
                   id="register-success"
-                  className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg text-sm text-center"
+                  className="p-3 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 rounded-lg text-sm text-center"
                 >
                   Registration successful! You can now login.
                 </div>
@@ -213,7 +213,7 @@ export default function SamplePages() {
               <div>
                 <label
                   htmlFor="register-name"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Full Name
                 </label>
@@ -221,14 +221,14 @@ export default function SamplePages() {
                   id="register-name"
                   name="name"
                   type="text"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="register-email"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Email
                 </label>
@@ -236,14 +236,14 @@ export default function SamplePages() {
                   id="register-email"
                   name="email"
                   type="email"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="register-password"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Password
                 </label>
@@ -251,14 +251,14 @@ export default function SamplePages() {
                   id="register-password"
                   name="password"
                   type="password"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="register-confirm-password"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Confirm Password
                 </label>
@@ -266,7 +266,7 @@ export default function SamplePages() {
                   id="register-confirm-password"
                   name="confirmPassword"
                   type="password"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>

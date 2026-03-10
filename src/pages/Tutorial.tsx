@@ -5,7 +5,7 @@ import { trackScriptReveal } from '../utils/tracking';
 const Lesson2Element = () => {
   const [clicked, setClicked] = useState(false);
   return (
-    <div className="my-4 p-4 border rounded-lg bg-white flex items-center gap-4">
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-4">
       <button 
         id="tutorial-button" 
         className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" 
@@ -17,7 +17,7 @@ const Lesson2Element = () => {
         Click Me
       </button>
       {clicked && (
-        <span className="text-emerald-600 font-medium animate-in fade-in duration-300">
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium animate-in fade-in duration-300">
           You did it! Now our boss Kelvin will buy you a meal!
         </span>
       )}
@@ -32,12 +32,12 @@ const lessons = [
     description: 'Learn how to locate a text input field and type text into it using Katalon Studio.',
     element: (
       <div className="flex flex-col md:flex-row gap-6 items-start my-4">
-        <div className="p-4 border rounded-lg bg-white w-full md:w-1/2">
-          <label htmlFor="tutorial-name" className="block text-sm font-medium text-slate-700 mb-1">How much do you want 财神爷 to bless you with?</label>
-          <input id="tutorial-name" type="text" className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Huat ah!" />
+        <div className="p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 w-full md:w-1/2">
+          <label htmlFor="tutorial-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">How much do you want 财神爷 to bless you with?</label>
+          <input id="tutorial-name" type="text" className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white" placeholder="Huat ah!" />
         </div>
         <div className="w-full md:w-1/2">
-          <img src="https://drive.google.com/thumbnail?id=1RLO5OPyNgbNM_hbLDqYKFcFeejQploB6&sz=w800" alt="财神爷" className="rounded-lg shadow-sm border border-slate-200 w-full object-cover" referrerPolicy="no-referrer" />
+          <img src="https://drive.google.com/thumbnail?id=1RLO5OPyNgbNM_hbLDqYKFcFeejQploB6&sz=w800" alt="财神爷" className="rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 w-full object-cover" referrerPolicy="no-referrer" />
         </div>
       </div>
     ),
@@ -82,9 +82,9 @@ WebUI.closeBrowser()`
     title: 'Challenge 3: Selecting from a Dropdown',
     description: 'Learn how to select an option from a dropdown menu by its visible text.',
     element: (
-      <div className="my-4 p-4 border rounded-lg bg-white">
-        <label htmlFor="tutorial-dropdown" className="block text-sm font-medium text-slate-700 mb-1">Who do you think will be taking MC this week?</label>
-        <select id="tutorial-dropdown" className="w-full px-4 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 outline-none">
+      <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
+        <label htmlFor="tutorial-dropdown" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Who do you think will be taking MC this week?</label>
+        <select id="tutorial-dropdown" className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none">
           <option value="">Choose...</option>
           <option value="brandon">Brandon</option>
           <option value="kai-ting">Kai Ting</option>
@@ -119,10 +119,10 @@ WebUI.closeBrowser()`
     title: 'Challenge 4: Waiting for an Element',
     description: 'Learn how to wait for an element to become visible before interacting with it.',
     element: (
-      <div className="my-4 p-4 border rounded-lg bg-white">
+      <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
         <button 
           id="tutorial-wait-btn" 
-          className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+          className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors disabled:bg-slate-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed"
           onClick={(e) => {
             const btn = e.target as HTMLButtonElement;
             btn.disabled = true;
@@ -130,7 +130,7 @@ WebUI.closeBrowser()`
             setTimeout(() => {
               const msg = document.createElement('div');
               msg.id = 'tutorial-success-msg';
-              msg.className = 'mt-4 p-3 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg font-medium';
+              msg.className = 'mt-4 p-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-lg font-medium';
               msg.innerText = 'Action completed successfully!';
               btn.parentElement?.appendChild(msg);
               btn.innerText = 'Done';
@@ -169,24 +169,24 @@ WebUI.closeBrowser()`
     title: 'Challenge 5: Selecting Radio Buttons',
     description: 'Learn how to interact with radio buttons and verify their selection state.',
     element: (
-      <div className="my-4 p-4 border rounded-lg bg-white">
-        <p className="block text-sm font-medium text-slate-700 mb-2">What is your preferred time to knock off from work?</p>
+      <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
+        <p className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">What is your preferred time to knock off from work?</p>
         <div className="space-y-2">
           <div className="flex items-center">
-            <input type="radio" id="radio-9am" name="knockoff" value="9am" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
-            <label htmlFor="radio-9am" className="ml-2 text-sm text-slate-700">9am</label>
+            <input type="radio" id="radio-9am" name="knockoff" value="9am" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="radio-9am" className="ml-2 text-sm text-slate-700 dark:text-slate-300">9am</label>
           </div>
           <div className="flex items-center">
-            <input type="radio" id="radio-1pm" name="knockoff" value="1pm" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
-            <label htmlFor="radio-1pm" className="ml-2 text-sm text-slate-700">1pm</label>
+            <input type="radio" id="radio-1pm" name="knockoff" value="1pm" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="radio-1pm" className="ml-2 text-sm text-slate-700 dark:text-slate-300">1pm</label>
           </div>
           <div className="flex items-center">
-            <input type="radio" id="radio-6pm" name="knockoff" value="6pm" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
-            <label htmlFor="radio-6pm" className="ml-2 text-sm text-slate-700">6pm</label>
+            <input type="radio" id="radio-6pm" name="knockoff" value="6pm" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="radio-6pm" className="ml-2 text-sm text-slate-700 dark:text-slate-300">6pm</label>
           </div>
           <div className="flex items-center">
-            <input type="radio" id="radio-never" name="knockoff" value="never" className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500" />
-            <label htmlFor="radio-never" className="ml-2 text-sm text-slate-700">I do not even want to turn up for work</label>
+            <input type="radio" id="radio-never" name="knockoff" value="never" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="radio-never" className="ml-2 text-sm text-slate-700 dark:text-slate-300">I do not even want to turn up for work</label>
           </div>
         </div>
       </div>
@@ -217,32 +217,32 @@ WebUI.closeBrowser()`
     title: 'Challenge 6: Selecting Checkboxes',
     description: 'Learn how to interact with checkboxes and verify their selection state.',
     element: (
-      <div className="my-4 p-4 border rounded-lg bg-white">
-        <p className="block text-sm font-medium text-slate-700 mb-2">What illness(es) do you think you will suffer this week?</p>
+      <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
+        <p className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">What illness(es) do you think you will suffer this week?</p>
         <div className="space-y-2">
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-arteritis" name="illness" value="arteritis" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-arteritis" className="ml-2 text-sm text-slate-700">Arteritis</label>
+            <input type="checkbox" id="checkbox-arteritis" name="illness" value="arteritis" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-arteritis" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Arteritis</label>
           </div>
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-cancer" name="illness" value="cancer" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-cancer" className="ml-2 text-sm text-slate-700">Cancer</label>
+            <input type="checkbox" id="checkbox-cancer" name="illness" value="cancer" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-cancer" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Cancer</label>
           </div>
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-covid" name="illness" value="covid" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-covid" className="ml-2 text-sm text-slate-700">Covid</label>
+            <input type="checkbox" id="checkbox-covid" name="illness" value="covid" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-covid" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Covid</label>
           </div>
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-flu" name="illness" value="flu" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-flu" className="ml-2 text-sm text-slate-700">Flu</label>
+            <input type="checkbox" id="checkbox-flu" name="illness" value="flu" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-flu" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Flu</label>
           </div>
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-pregnancy" name="illness" value="pregnancy" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-pregnancy" className="ml-2 text-sm text-slate-700">Pregnancy</label>
+            <input type="checkbox" id="checkbox-pregnancy" name="illness" value="pregnancy" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-pregnancy" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Pregnancy</label>
           </div>
           <div className="flex items-center">
-            <input type="checkbox" id="checkbox-tinea-pedis" name="illness" value="tinea-pedis" className="w-4 h-4 text-indigo-600 border-slate-300 rounded focus:ring-indigo-500" />
-            <label htmlFor="checkbox-tinea-pedis" className="ml-2 text-sm text-slate-700">Tinea Pedis</label>
+            <input type="checkbox" id="checkbox-tinea-pedis" name="illness" value="tinea-pedis" className="w-4 h-4 text-indigo-600 border-slate-300 dark:border-slate-600 rounded focus:ring-indigo-500 dark:bg-slate-900" />
+            <label htmlFor="checkbox-tinea-pedis" className="ml-2 text-sm text-slate-700 dark:text-slate-300">Tinea Pedis</label>
           </div>
         </div>
       </div>
@@ -301,22 +301,22 @@ export default function Tutorial() {
           <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Forms</h2>
           <div className="space-y-4">
             {lessons.map((lesson) => (
-              <div key={lesson.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+              <div key={lesson.id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
                 <button 
-                  className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors"
+                  className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
                   onClick={() => toggleLesson(lesson.id)}
                 >
-                  <h3 className="text-lg font-semibold text-slate-900">{lesson.title}</h3>
-                  {expandedLesson === lesson.id ? <ChevronDown size={20} className="text-slate-500" /> : <ChevronRight size={20} className="text-slate-500" />}
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{lesson.title}</h3>
+                  {expandedLesson === lesson.id ? <ChevronDown size={20} className="text-slate-500 dark:text-slate-400" /> : <ChevronRight size={20} className="text-slate-500 dark:text-slate-400" />}
                 </button>
                 
                 {expandedLesson === lesson.id && (
-                  <div className="p-6 border-t border-slate-200 animate-in fade-in slide-in-from-top-2">
-                    <p className="text-slate-600 mb-4">{lesson.description}</p>
+                  <div className="p-6 border-t border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-top-2">
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">{lesson.description}</p>
                     
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-2">Practice Element</h4>
-                      <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                      <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-2">Practice Element</h4>
+                      <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
                         {lesson.element}
                       </div>
                     </div>

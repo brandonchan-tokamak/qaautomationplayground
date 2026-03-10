@@ -39,9 +39,9 @@ export default function PopupWindows() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Browser Windows */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Browser Windows</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Open links in new tabs or windows.
           </p>
           <div className="flex flex-col gap-4">
@@ -63,9 +63,9 @@ export default function PopupWindows() {
         </div>
 
         {/* Native Dialogs */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Native Dialogs</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Interact with browser alerts, confirms, and prompts.
           </p>
           <div className="flex flex-col gap-4 mb-6">
@@ -91,8 +91,8 @@ export default function PopupWindows() {
               Trigger Prompt
             </button>
           </div>
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 min-h-[3rem]">
-            <p id="dialog-result" className="text-slate-700 font-medium">
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[3rem]">
+            <p id="dialog-result" className="text-slate-700 dark:text-slate-300 font-medium">
               {popupMessage || "Result will appear here"}
             </p>
           </div>

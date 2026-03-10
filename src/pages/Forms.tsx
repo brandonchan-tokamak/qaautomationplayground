@@ -51,7 +51,7 @@ export default function Forms() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Form Container */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-6 dark:text-white">Registration Form</h2>
 
           <form
@@ -64,7 +64,7 @@ export default function Forms() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Full Name
                 </label>
@@ -74,14 +74,14 @@ export default function Forms() {
                   type="text"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-slate-700 mb-1"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
                 >
                   Email Address
                 </label>
@@ -91,7 +91,7 @@ export default function Forms() {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                   required
                 />
               </div>
@@ -100,7 +100,7 @@ export default function Forms() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-slate-700 mb-1"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
               >
                 Password
               </label>
@@ -110,14 +110,14 @@ export default function Forms() {
                 type="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white"
                 required
               />
             </div>
 
             {/* Radio Buttons */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 Gender
               </label>
               <div className="flex gap-4">
@@ -129,9 +129,9 @@ export default function Forms() {
                     id="gender-male"
                     checked={formData.gender === "male"}
                     onChange={handleChange}
-                    className="text-indigo-600 focus:ring-indigo-500"
+                    className="text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                   />
-                  <span className="text-sm text-slate-700">Male</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Male</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
@@ -141,9 +141,9 @@ export default function Forms() {
                     id="gender-female"
                     checked={formData.gender === "female"}
                     onChange={handleChange}
-                    className="text-indigo-600 focus:ring-indigo-500"
+                    className="text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                   />
-                  <span className="text-sm text-slate-700">Female</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Female</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
@@ -153,16 +153,16 @@ export default function Forms() {
                     id="gender-other"
                     checked={formData.gender === "other"}
                     onChange={handleChange}
-                    className="text-indigo-600 focus:ring-indigo-500"
+                    className="text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                   />
-                  <span className="text-sm text-slate-700">Other</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Other</span>
                 </label>
               </div>
             </div>
 
             {/* Checkboxes */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 Hobbies
               </label>
               <div className="flex flex-wrap gap-4">
@@ -175,9 +175,9 @@ export default function Forms() {
                       id={`hobby-${hobby.toLowerCase()}`}
                       checked={formData.hobbies.includes(hobby.toLowerCase())}
                       onChange={handleChange}
-                      className="rounded text-indigo-600 focus:ring-indigo-500"
+                      className="rounded text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                     />
-                    <span className="text-sm text-slate-700">{hobby}</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">{hobby}</span>
                   </label>
                 ))}
               </div>
@@ -187,7 +187,7 @@ export default function Forms() {
             <div>
               <label
                 htmlFor="country"
-                className="block text-sm font-medium text-slate-700 mb-1"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
               >
                 Country
               </label>
@@ -196,7 +196,7 @@ export default function Forms() {
                 name="country"
                 value={formData.country}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white dark:bg-slate-900 dark:text-white"
               >
                 <option value="">Select a country...</option>
                 <option value="us">United States</option>
@@ -211,7 +211,7 @@ export default function Forms() {
             <div>
               <label
                 htmlFor="comments"
-                className="block text-sm font-medium text-slate-700 mb-1"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
               >
                 Comments
               </label>
@@ -221,7 +221,7 @@ export default function Forms() {
                 rows={3}
                 value={formData.comments}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none resize-none dark:bg-slate-900 dark:text-white"
               ></textarea>
             </div>
 
@@ -234,10 +234,10 @@ export default function Forms() {
                   id="agree-terms"
                   checked={formData.agreeTerms}
                   onChange={handleChange}
-                  className="rounded text-indigo-600 focus:ring-indigo-500"
+                  className="rounded text-indigo-600 focus:ring-indigo-500 dark:bg-slate-900"
                   required
                 />
-                <span className="text-sm text-slate-700">
+                <span className="text-sm text-slate-700 dark:text-slate-300">
                   I agree to the terms and conditions
                 </span>
               </label>
@@ -255,23 +255,23 @@ export default function Forms() {
         </div>
 
         {/* Result Container */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-fit sticky top-8">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 h-fit sticky top-8">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Form Data</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             The submitted data will appear here.
           </p>
 
           {submitted ? (
             <div
               id="form-result"
-              className="bg-slate-50 p-4 rounded-lg border border-slate-200 overflow-auto"
+              className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 overflow-auto"
             >
-              <pre className="text-sm text-slate-800 whitespace-pre-wrap">
+              <pre className="text-sm text-slate-800 dark:text-slate-200 whitespace-pre-wrap">
                 {JSON.stringify(formData, null, 2)}
               </pre>
             </div>
           ) : (
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 text-center text-slate-500 italic">
+            <div className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-center text-slate-500 dark:text-slate-400 italic">
               Form not submitted yet.
             </div>
           )}

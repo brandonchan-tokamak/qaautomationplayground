@@ -31,9 +31,9 @@ export default function MouseActions() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Click Types */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Click Types</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Test different types of mouse clicks.
           </p>
           <div className="flex flex-wrap gap-4 mb-6">
@@ -59,31 +59,31 @@ export default function MouseActions() {
               Right Click
             </button>
           </div>
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 min-h-[3rem]">
-            <p id="click-result" className="text-slate-700 font-medium">
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[3rem]">
+            <p id="click-result" className="text-slate-700 dark:text-slate-300 font-medium">
               {clickResult || "Result will appear here"}
             </p>
           </div>
         </div>
 
         {/* Hover Action */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Hover Action</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Hover over the element to reveal hidden content.
           </p>
           <div
             id="hover-target"
             onMouseEnter={() => setHoverState(true)}
             onMouseLeave={() => setHoverState(false)}
-            className="w-full h-32 bg-indigo-100 border-2 border-dashed border-indigo-300 rounded-xl flex items-center justify-center cursor-pointer transition-colors hover:bg-indigo-200"
+            className="w-full h-32 bg-indigo-100 dark:bg-indigo-900/20 border-2 border-dashed border-indigo-300 dark:border-indigo-800 rounded-xl flex items-center justify-center cursor-pointer transition-colors hover:bg-indigo-200 dark:hover:bg-indigo-900/40"
           >
-            <span className="text-indigo-600 font-medium">Hover me!</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-medium">Hover me!</span>
           </div>
           {hoverState && (
             <div
               id="hover-content"
-              className="mt-4 p-4 bg-indigo-50 text-indigo-700 rounded-lg border border-indigo-200 font-medium animate-in fade-in slide-in-from-top-2"
+              className="mt-4 p-4 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg border border-indigo-200 dark:border-indigo-800 font-medium animate-in fade-in slide-in-from-top-2"
             >
               You found the hidden content!
             </div>
@@ -91,9 +91,9 @@ export default function MouseActions() {
         </div>
 
         {/* Drag and Drop (Simple) */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 md:col-span-2">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Simple Drag & Drop</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Drag the item into the drop zone.
           </p>
           <div className="flex gap-8 items-center">
@@ -113,12 +113,14 @@ export default function MouseActions() {
                 e.preventDefault();
                 e.currentTarget.classList.add(
                   "bg-slate-100",
+                  "dark:bg-slate-700",
                   "border-rose-400",
                 );
               }}
               onDragLeave={(e) => {
                 e.currentTarget.classList.remove(
                   "bg-slate-100",
+                  "dark:bg-slate-700",
                   "border-rose-400",
                 );
               }}
@@ -126,6 +128,7 @@ export default function MouseActions() {
                 e.preventDefault();
                 e.currentTarget.classList.remove(
                   "bg-slate-100",
+                  "dark:bg-slate-700",
                   "border-rose-400",
                 );
                 if (e.dataTransfer.getData("text/plain") === "dragged-item") {
@@ -133,15 +136,15 @@ export default function MouseActions() {
                 }
               }}
               className={`w-48 h-48 border-2 border-dashed rounded-xl flex items-center justify-center transition-colors ${
-                dragState ? "bg-rose-50 border-rose-500" : "border-slate-300"
+                dragState ? "bg-rose-50 dark:bg-rose-900/20 border-rose-500" : "border-slate-300 dark:border-slate-600"
               }`}
             >
               {dragState ? (
-                <span id="drop-success" className="text-rose-600 font-bold">
+                <span id="drop-success" className="text-rose-600 dark:text-rose-400 font-bold">
                   Dropped Successfully!
                 </span>
               ) : (
-                <span className="text-slate-400 font-medium">Drop Zone</span>
+                <span className="text-slate-400 dark:text-slate-500 font-medium">Drop Zone</span>
               )}
             </div>
           </div>

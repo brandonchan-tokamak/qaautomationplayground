@@ -20,20 +20,28 @@ export default function AdvancedUI() {
     if (host && !host.shadowRoot) {
       const shadow = host.attachShadow({ mode: "open" });
       const style = document.createElement("style");
+      
+      // Check if system is in dark mode
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      
       style.textContent = `
         .shadow-container {
           padding: 1rem;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
+          background-color: ${isDarkMode ? '#1e293b' : '#f8fafc'};
+          border: 1px solid ${isDarkMode ? '#334155' : '#e2e8f0'};
           border-radius: 0.5rem;
           font-family: system-ui, sans-serif;
+          color: ${isDarkMode ? '#f1f5f9' : '#0f172a'};
         }
         .shadow-input {
           width: 100%;
           padding: 0.5rem;
           margin-top: 0.5rem;
-          border: 1px solid #cbd5e1;
+          border: 1px solid ${isDarkMode ? '#475569' : '#cbd5e1'};
           border-radius: 0.25rem;
+          background-color: ${isDarkMode ? '#0f172a' : '#ffffff'};
+          color: ${isDarkMode ? '#ffffff' : '#000000'};
+          box-sizing: border-box;
         }
         .shadow-button {
           margin-top: 0.5rem;
@@ -43,6 +51,9 @@ export default function AdvancedUI() {
           border: none;
           border-radius: 0.25rem;
           cursor: pointer;
+        }
+        .shadow-button:hover {
+          background-color: #4338ca;
         }
       `;
 
@@ -80,7 +91,7 @@ export default function AdvancedUI() {
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
           Advanced UI Features
         </h1>
-        <p className="text-slate-600 mt-2">
+        <p className="text-slate-600 dark:text-slate-400 mt-2">
           Tackle complex scenarios like Shadow DOM, dynamic IDs, and custom
           components.
         </p>
@@ -88,17 +99,17 @@ export default function AdvancedUI() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Dynamic ID */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Dynamic ID</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             The ID of the button below changes every 3 seconds. Use CSS
             selectors or XPath to find it.
           </p>
 
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg mb-4">
-            <p className="text-sm font-mono text-slate-700">
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg mb-4">
+            <p className="text-sm font-mono text-slate-700 dark:text-slate-300">
               Current ID:{" "}
-              <span className="font-bold text-indigo-600">{dynamicId}</span>
+              <span className="font-bold text-indigo-600 dark:text-indigo-400">{dynamicId}</span>
             </p>
           </div>
 
@@ -112,16 +123,16 @@ export default function AdvancedUI() {
         </div>
 
         {/* Shadow DOM */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Shadow DOM</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Interact with elements hidden inside a Shadow Root.
           </p>
 
           <div id="shadow-host" className="mb-4"></div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 min-h-[3rem]">
-            <p id="shadow-result" className="text-slate-700 font-medium">
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[3rem]">
+            <p id="shadow-result" className="text-slate-700 dark:text-slate-300 font-medium">
               {shadowContent
                 ? `Submitted: ${shadowContent}`
                 : "Result will appear here"}
@@ -130,9 +141,9 @@ export default function AdvancedUI() {
         </div>
 
         {/* Star Rating (Custom Component) */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 md:col-span-2">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Star Rating</h2>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Interact with a custom UI component that doesn't use standard
             inputs.
           </p>
@@ -144,7 +155,7 @@ export default function AdvancedUI() {
                 className={`star-button w-10 h-10 rounded-full flex items-center justify-center text-2xl transition-colors ${
                   star <= rating
                     ? "text-amber-400"
-                    : "text-slate-300 hover:text-amber-200"
+                    : "text-slate-300 dark:text-slate-600 hover:text-amber-200"
                 }`}
                 onClick={() => setRating(star)}
                 aria-label={`Rate ${star} stars`}
@@ -154,8 +165,8 @@ export default function AdvancedUI() {
             ))}
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 min-h-[3rem]">
-            <p id="rating-result" className="text-slate-700 font-medium">
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[3rem]">
+            <p id="rating-result" className="text-slate-700 dark:text-slate-300 font-medium">
               {rating > 0
                 ? `You rated: ${rating} star${rating > 1 ? "s" : ""}`
                 : "No rating yet"}
