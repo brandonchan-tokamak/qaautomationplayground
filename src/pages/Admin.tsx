@@ -206,9 +206,13 @@ export default function Admin() {
           </div>
         </div>
         <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
-          <ul className="text-sm text-slate-700 dark:text-slate-300 list-disc pl-5">
-            {stats.userStats.ips.map((ip: string) => <li key={ip}>{ip}</li>)}
-          </ul>
+          {stats.userStats.ips.length > 0 ? (
+            <ul className="text-sm text-slate-700 dark:text-slate-300 list-disc pl-5">
+              {stats.userStats.ips.map((ip: string) => <li key={ip}>{ip}</li>)}
+            </ul>
+          ) : (
+            <p className="text-sm text-slate-500 dark:text-slate-400 italic">No IP addresses recorded yet.</p>
+          )}
         </div>
       </div>
 

@@ -28,19 +28,19 @@ export const trackUserVisit = async () => {
   if (!hasVisited) {
     stats.unique += 1;
     localStorage.setItem('has_visited', 'true');
-    
-    // Fetch IP
-    try {
-      const response = await fetch('https://api.ipify.org?format=json');
-      const data = await response.json();
-      if (!stats.ips.includes(data.ip)) {
-        stats.ips.push(data.ip);
-      }
-    } catch (e) {
-      console.error('Failed to fetch IP', e);
-    }
   } else {
     stats.repeated += 1;
+  }
+  
+  // Fetch IP
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    if (data && data.ip && !stats.ips.includes(data.ip)) {
+      stats.ips.push(data.ip);
+    }
+  } catch (e) {
+    console.error('Failed to fetch IP', e);
   }
   
   localStorage.setItem('user_visit_stats', JSON.stringify(stats));
