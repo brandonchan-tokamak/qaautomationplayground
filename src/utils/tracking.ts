@@ -12,13 +12,33 @@ export const trackScriptReveal = (lessonId: string) => {
   localStorage.setItem('script_reveal_stats', JSON.stringify(stats));
 };
 
-export const trackUserVisit = () => {
+export const trackClick = () => {
+  const stats = JSON.parse(localStorage.getItem('click_stats') || '0');
+  localStorage.setItem('click_stats', JSON.stringify(stats + 1));
+};
+
+export const trackUserVisit = async () => {
   const hasVisited = localStorage.getItem('has_visited');
-  const stats = JSON.parse(localStorage.getItem('user_visit_stats') || '{"unique": 0, "repeated": 0}');
+  const stats = JSON.parse(localStorage.getItem('user_visit_stats') || '{"unique": 0, "repeated": 0, "ips": []}');
+  
+  if (!stats.ips) {
+    stats.ips = [];
+  }
   
   if (!hasVisited) {
     stats.unique += 1;
     localStorage.setItem('has_visited', 'true');
+    
+    // Fetch IP
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      if (!stats.ips.includes(data.ip)) {
+        stats.ips.push(data.ip);
+      }
+    } catch (e) {
+      console.error('Failed to fetch IP', e);
+    }
   } else {
     stats.repeated += 1;
   }
@@ -27,10 +47,16 @@ export const trackUserVisit = () => {
 };
 
 export const getStats = () => {
+  const userStats = JSON.parse(localStorage.getItem('user_visit_stats') || '{"unique": 0, "repeated": 0, "ips": []}');
+  if (!userStats.ips) {
+    userStats.ips = [];
+  }
+  
   return {
     pageStats: JSON.parse(localStorage.getItem('page_stats') || '{}'),
     scriptStats: JSON.parse(localStorage.getItem('script_reveal_stats') || '{}'),
-    userStats: JSON.parse(localStorage.getItem('user_visit_stats') || '{"unique": 0, "repeated": 0}')
+    userStats,
+    clickStats: JSON.parse(localStorage.getItem('click_stats') || '0')
   };
 };
 
@@ -49,12 +75,13 @@ export const logoutAdmin = () => {
 export const resetStats = () => {
   localStorage.setItem('page_stats', JSON.stringify({}));
   localStorage.setItem('script_reveal_stats', JSON.stringify({}));
-  localStorage.setItem('user_visit_stats', JSON.stringify({ unique: 0, repeated: 0 }));
+  localStorage.setItem('user_visit_stats', JSON.stringify({ unique: 0, repeated: 0, ips: [] }));
+  localStorage.setItem('click_stats', JSON.stringify(0));
   localStorage.setItem('has_visited', 'true');
 };
 
 export const resetUserStats = () => {
-  localStorage.setItem('user_visit_stats', JSON.stringify({ unique: 0, repeated: 0 }));
+  localStorage.setItem('user_visit_stats', JSON.stringify({ unique: 0, repeated: 0, ips: [] }));
   localStorage.setItem('has_visited', 'true');
 };
 

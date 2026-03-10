@@ -19,7 +19,7 @@ import {
   ShieldCheck
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { trackPageView, trackUserVisit, isAdminLoggedIn } from "../utils/tracking";
+import { trackPageView, trackUserVisit, trackClick, isAdminLoggedIn } from "../utils/tracking";
 
 const navItems = [
   { path: "/", label: "Home", icon: Home },
@@ -50,6 +50,12 @@ export default function Layout() {
 
   useEffect(() => {
     trackUserVisit();
+    
+    const handleGlobalClick = () => {
+      trackClick();
+    };
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
   }, []);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { Users, MousePointer2, BarChart3, LogOut, RotateCcw, AlertTriangle } fro
 const ALL_PAGES = [
   "Home", "Tutorial", "Tables", "Search", "Wait Conditions", 
   "Keyboard Actions", "Mouse Actions", "Popup Windows", 
-  "Frames", "Forms", "Upload & Download", "Sample Pages", "Advanced UI"
+  "Forms", "Upload & Download", "Sample Pages", "Advanced UI"
 ];
 
 const SCRIPT_LESSONS = [
@@ -135,7 +135,7 @@ export default function Admin() {
       </div>
 
       {/* User Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
@@ -178,6 +178,37 @@ export default function Admin() {
               {Object.values(pageStatsWithDefaults).reduce((a: any, b: any) => a + b, 0)}
             </p>
           </div>
+        </div>
+
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg text-indigo-600 dark:text-indigo-400">
+                <MousePointer2 size={24} />
+              </div>
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Click Stats</h2>
+            </div>
+          </div>
+          <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+            <p className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Total Clicks</p>
+            <p className="text-3xl font-bold text-slate-900 dark:text-white mt-1">{stats.clickStats}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg text-indigo-600 dark:text-indigo-400">
+              <Users size={24} />
+            </div>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">IP Addresses</h2>
+          </div>
+        </div>
+        <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
+          <ul className="text-sm text-slate-700 dark:text-slate-300 list-disc pl-5">
+            {stats.userStats.ips.map((ip: string) => <li key={ip}>{ip}</li>)}
+          </ul>
         </div>
       </div>
 
