@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import CheatSheet from "./pages/CheatSheet";
 import WaitConditions from "./pages/WaitConditions";
 import KeyboardActions from "./pages/KeyboardActions";
 import MouseActions from "./pages/MouseActions";
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="cheat-sheet" element={<CheatSheet />} />
           <Route path="tutorial" element={<Tutorial />} />
           <Route path="tables" element={<Tables />} />
           <Route path="search" element={<Search />} />

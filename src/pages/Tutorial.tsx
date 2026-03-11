@@ -112,14 +112,9 @@ const formLessons = [
     title: 'Challenge 1: Filling a Simple Textbox',
     description: 'Learn how to locate a text input field and type text into it using Katalon Studio.',
     element: (
-      <div className="flex flex-col md:flex-row gap-6 items-start my-4">
-        <div className="p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 w-full md:w-1/2">
-          <label htmlFor="tutorial-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">How much do you want 财神爷 to bless you with?</label>
-          <input id="tutorial-name" type="text" className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white" placeholder="Huat ah!" />
-        </div>
-        <div className="w-full md:w-1/2">
-          <img src="https://drive.google.com/thumbnail?id=1RLO5OPyNgbNM_hbLDqYKFcFeejQploB6&sz=w800" alt="财神爷" className="rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 w-full object-cover" referrerPolicy="no-referrer" />
-        </div>
+      <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
+        <label htmlFor="tutorial-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">How much do you want 财神爷 to bless you with?</label>
+        <input id="tutorial-name" type="text" className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none dark:bg-slate-900 dark:text-white" placeholder="Huat ah!" />
       </div>
     ),
     script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
