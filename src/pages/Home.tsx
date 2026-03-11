@@ -109,13 +109,10 @@ export default function Home() {
     <div className="space-y-8">
       <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-200">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-          Welcome to the Test Automation Playground
+          QA's Playground
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl">
-          This is a locally hosted web application designed to help you practice
-          your test automation skills. It contains various UI elements and
-          scenarios that are commonly encountered when writing automated tests
-          using tools like Selenium, Playwright, Cypress, or Puppeteer.
+          practice practice practice practice practice practice practice practice practice practice practice practice practice practice practice 
         </p>
       </div>
 

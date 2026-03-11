@@ -25,7 +25,88 @@ const Lesson2Element = () => {
   );
 };
 
-const lessons = [
+const Lesson7Element = () => {
+  const [doubleClicked, setDoubleClicked] = useState(false);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-4">
+      <button 
+        id="tutorial-double-click" 
+        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" 
+        onDoubleClick={() => {
+          setDoubleClicked(true);
+        }}
+      >
+        Double Click Me
+      </button>
+      {doubleClicked && (
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium animate-in fade-in duration-300">
+          Double click successful!
+        </span>
+      )}
+    </div>
+  );
+};
+
+const Lesson8Element = () => {
+  const [rightClicked, setRightClicked] = useState(false);
+  const [leftClicked, setLeftClicked] = useState(false);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-4">
+      <button 
+        id="tutorial-right-click" 
+        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" 
+        onClick={() => {
+          setLeftClicked(true);
+          setRightClicked(false);
+        }}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          setRightClicked(true);
+          setLeftClicked(false);
+        }}
+      >
+        Right Click Me
+      </button>
+      {rightClicked && (
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium animate-in fade-in duration-300">
+          Right click successful!
+        </span>
+      )}
+      {leftClicked && !rightClicked && (
+        <span className="text-rose-600 dark:text-rose-400 font-medium animate-in fade-in duration-300">
+          I said right click me, why did you do a left click?
+        </span>
+      )}
+    </div>
+  );
+};
+
+const Lesson9Element = () => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-4">
+      <button 
+        id="tutorial-hover" 
+        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors" 
+        onMouseEnter={() => {
+          setHovered(true);
+        }}
+        onMouseLeave={() => {
+          setHovered(false);
+        }}
+      >
+        Hover Over Me
+      </button>
+      {hovered && (
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium animate-in fade-in duration-300">
+          Hover successful!
+        </span>
+      )}
+    </div>
+  );
+};
+
+const formLessons = [
   {
     id: 'textbox',
     title: 'Challenge 1: Filling a Simple Textbox',
@@ -255,7 +336,7 @@ WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/
 WebUI.maximizeWindow()
 
 def challenge6 = new TestObject()
-challenge6.addProperty('xpath', ConditionType.EQUALS, "//h2[contains(text(), 'Challenge 6: Selecting Checkboxes')]")
+challenge6.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 6: Selecting Checkboxes')]")
 WebUI.click(challenge6)
 
 def checkboxCovid = new TestObject()
@@ -274,8 +355,94 @@ WebUI.closeBrowser()`
   }
 ];
 
+const mouseClickLessons = [
+  {
+    id: 'double-click',
+    title: 'Challenge 7: Double Click',
+    description: 'Learn how to perform a double click action on an element.',
+    element: <Lesson7Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge7 = new TestObject()
+challenge7.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 7: Double Click')]")
+WebUI.click(challenge7)
+
+def doubleClickBtn = new TestObject()
+doubleClickBtn.addProperty('xpath', ConditionType.EQUALS, "//button[@id='tutorial-double-click']")
+WebUI.doubleClick(doubleClickBtn)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  },
+  {
+    id: 'right-click',
+    title: 'Challenge 8: Right Click',
+    description: 'Learn how to perform a right click (context click) action on an element.',
+    element: <Lesson8Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge8 = new TestObject()
+challenge8.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 8: Right Click')]")
+WebUI.click(challenge8)
+
+def rightClickBtn = new TestObject()
+rightClickBtn.addProperty('xpath', ConditionType.EQUALS, "//button[@id='tutorial-right-click']")
+WebUI.rightClick(rightClickBtn)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  },
+  {
+    id: 'hover',
+    title: 'Challenge 9: Mouse Hover',
+    description: 'Learn how to hover the mouse over an element.',
+    element: <Lesson9Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge9 = new TestObject()
+challenge9.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 9: Mouse Hover')]")
+WebUI.click(challenge9)
+
+def hoverBtn = new TestObject()
+hoverBtn.addProperty('xpath', ConditionType.EQUALS, "//button[@id='tutorial-hover']")
+WebUI.mouseOver(hoverBtn)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  }
+];
+
+const lessonCategories = [
+  {
+    title: "Forms",
+    lessons: formLessons
+  },
+  {
+    title: "Mouse Clicks",
+    lessons: mouseClickLessons
+  }
+];
+
 export default function Tutorial() {
-  const [expandedLesson, setExpandedLesson] = useState<string | null>(lessons[0].id);
+  const [expandedLesson, setExpandedLesson] = useState<string | null>(formLessons[0].id);
   const [revealedScripts, setRevealedScripts] = useState<Record<string, boolean>>({});
 
   const toggleLesson = (id: string) => {
@@ -297,53 +464,55 @@ export default function Tutorial() {
       </div>
 
       <div className="space-y-8">
-        <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Forms</h2>
-          <div className="space-y-4">
-            {lessons.map((lesson) => (
-              <div key={lesson.id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-                <button 
-                  className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
-                  onClick={() => toggleLesson(lesson.id)}
-                >
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{lesson.title}</h3>
-                  {expandedLesson === lesson.id ? <ChevronDown size={20} className="text-slate-500 dark:text-slate-400" /> : <ChevronRight size={20} className="text-slate-500 dark:text-slate-400" />}
-                </button>
-                
-                {expandedLesson === lesson.id && (
-                  <div className="p-6 border-t border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-top-2">
-                    <p className="text-slate-600 dark:text-slate-400 mb-4">{lesson.description}</p>
-                    
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-2">Practice Element</h4>
-                      <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
-                        {lesson.element}
+        {lessonCategories.map((category, categoryIndex) => (
+          <div key={categoryIndex}>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">{category.title}</h2>
+            <div className="space-y-4">
+              {category.lessons.map((lesson) => (
+                <div key={lesson.id} className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+                  <button 
+                    className="w-full px-6 py-4 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
+                    onClick={() => toggleLesson(lesson.id)}
+                  >
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{lesson.title}</h3>
+                    {expandedLesson === lesson.id ? <ChevronDown size={20} className="text-slate-500 dark:text-slate-400" /> : <ChevronRight size={20} className="text-slate-500 dark:text-slate-400" />}
+                  </button>
+                  
+                  {expandedLesson === lesson.id && (
+                    <div className="p-6 border-t border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-top-2">
+                      <p className="text-slate-600 dark:text-slate-400 mb-4">{lesson.description}</p>
+                      
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-2">Practice Element</h4>
+                        <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                          {lesson.element}
+                        </div>
+                      </div>
+
+                      <div>
+                        <button 
+                          onClick={() => toggleScript(lesson.id)}
+                          className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
+                        >
+                          <Code size={18} />
+                          {revealedScripts[lesson.id] ? 'Hide Script' : 'Reveal Katalon Script'}
+                        </button>
+
+                        {revealedScripts[lesson.id] && (
+                          <div className="mt-4 p-4 bg-slate-900 rounded-xl overflow-x-auto animate-in fade-in slide-in-from-top-2">
+                            <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
+                              {lesson.script}
+                            </pre>
+                          </div>
+                        )}
                       </div>
                     </div>
-
-                    <div>
-                      <button 
-                        onClick={() => toggleScript(lesson.id)}
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
-                      >
-                        <Code size={18} />
-                        {revealedScripts[lesson.id] ? 'Hide Script' : 'Reveal Katalon Script'}
-                      </button>
-
-                      {revealedScripts[lesson.id] && (
-                        <div className="mt-4 p-4 bg-slate-900 rounded-xl overflow-x-auto animate-in fade-in slide-in-from-top-2">
-                          <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
-                            {lesson.script}
-                          </pre>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
