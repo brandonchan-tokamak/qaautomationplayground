@@ -120,6 +120,86 @@ WebUI.click(myElement)`}
 
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
         <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Hard Wait vs Smart Wait</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Why you should avoid hard sleeps and use smart waits instead.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-700">
+          {/* Wrong Hard Wait */}
+          <div className="p-6 bg-slate-900">
+            <h3 className="text-rose-400 font-semibold mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+              Wrong Hard Wait
+            </h3>
+            
+            <div className="space-y-6">
+              <div>
+                <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
+{`// Java (Selenium)
+WebDriver driver = new ChromeDriver();
+driver.get("https://example.com");
+
+// Hard sleep for 5 seconds before clicking
+Thread.sleep(5000);
+
+driver.findElement(By.cssSelector(".button-active")).click();`}
+                </pre>
+              </div>
+              
+              <div className="pt-6 border-t border-slate-700/50">
+                <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
+{`// JavaScript (Playwright)
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+// Hard sleep for 5 seconds before clicking
+await page.waitForTimeout(5000);
+await page.locator('.button-active').click();`}
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          {/* Better Smart Wait */}
+          <div className="p-6 bg-slate-900">
+            <h3 className="text-emerald-400 font-semibold mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Better Smart Wait
+            </h3>
+            
+            <div className="space-y-6">
+              <div>
+                <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
+{`// Java (Selenium)
+WebDriver driver = new ChromeDriver();
+driver.get("https://example.com");
+
+// Wait until element becomes visible
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(ExpectedConditions.elementToBeClickable(
+  By.cssSelector(".button-active")
+)).click();`}
+                </pre>
+              </div>
+              
+              <div className="pt-6 border-t border-slate-700/50">
+                <pre className="text-sm text-emerald-400 font-mono whitespace-pre-wrap">
+{`// JavaScript (Playwright)
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+// Wait until element becomes visible
+await page.locator('.button-active').waitFor({ state: 'visible' });
+await page.locator('.button-active').click();`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Wait Conditions Template</h2>
           <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Common wait strategies to handle dynamic content.</p>
         </div>

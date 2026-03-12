@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { isAdminLoggedIn } from "../utils/tracking";
 import { Link } from "react-router-dom";
 import {
   Clock,
@@ -12,17 +14,14 @@ import {
   Trophy,
   BookOpen,
   Table,
-  Search
+  Search,
+  Calendar,
+  GripHorizontal,
+  Bell,
+  Grid
 } from "lucide-react";
 
 const categories = [
-  {
-    path: "/learn",
-    label: "Learn",
-    description: "Learn how to identify elements and interact with them.",
-    icon: BookOpen,
-    color: "bg-purple-500",
-  },
   {
     path: "/tutorial",
     label: "Challenge",
@@ -89,6 +88,34 @@ const categories = [
     color: "bg-orange-500",
   },
   {
+    path: "/date-pickers",
+    label: "Date Pickers",
+    description: "Practice automating standard and custom calendar inputs.",
+    icon: Calendar,
+    color: "bg-yellow-500",
+  },
+  {
+    path: "/drag-and-drop",
+    label: "Drag & Drop",
+    description: "Automate moving elements between lists and adjusting sliders.",
+    icon: GripHorizontal,
+    color: "bg-red-500",
+  },
+  {
+    path: "/toasts",
+    label: "Toasts & Notifications",
+    description: "Practice automating ephemeral elements that appear and disappear.",
+    icon: Bell,
+    color: "bg-sky-500",
+  },
+  {
+    path: "/ag-grid",
+    label: "AG Grid",
+    description: "Practice interacting with complex data grids using AG Grid.",
+    icon: Grid,
+    color: "bg-emerald-600",
+  },
+  {
     path: "/sample-pages",
     label: "Sample Pages",
     description: "Complete end-to-end flows like login and registration.",
@@ -98,13 +125,27 @@ const categories = [
   {
     path: "/advanced-ui",
     label: "Advanced UI",
-    description: "Tackle drag and drop, shadow DOM, and dynamic elements.",
+    description: "Tackle dynamic elements and custom components like star ratings.",
     icon: Wand2,
     color: "bg-fuchsia-500",
   },
 ];
 
 export default function Home() {
+  const [isAdmin, setIsAdmin] = useState(isAdminLoggedIn());
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsAdmin(isAdminLoggedIn());
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const displayCategories = isAdmin 
+    ? categories 
+    : categories.filter(c => c.path !== "/ag-grid");
+
   return (
     <div className="space-y-8">
       <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-200">
@@ -112,12 +153,12 @@ export default function Home() {
           QA's Playground
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl">
-          practice practice practice practice practice practice practice practice practice practice practice practice practice practice practice 
+          Practice • Práctica • Pratique • Praxis • 实践 • 練習 • Практика • الممارسة • अभ्यास • 연습 • Pratica • Praktijk • Övning
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map((category) => {
+        {displayCategories.map((category) => {
           const Icon = category.icon;
           return (
             <Link

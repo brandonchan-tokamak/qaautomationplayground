@@ -17,7 +17,11 @@ import {
   Sun,
   UploadCloud,
   ShieldCheck,
-  Code
+  Code,
+  Calendar,
+  GripHorizontal,
+  Bell,
+  Grid
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { trackPageView, trackUserVisit, trackClick, isAdminLoggedIn } from "../utils/tracking";
@@ -33,6 +37,9 @@ const navItems = [
   { path: "/mouse-actions", label: "Mouse Actions", icon: MousePointer2 },
   { path: "/popup-windows", label: "Popup Windows", icon: AppWindow },
   { path: "/forms", label: "Forms", icon: FileText },
+  { path: "/date-pickers", label: "Date Pickers", icon: Calendar },
+  { path: "/drag-and-drop", label: "Drag & Drop", icon: GripHorizontal },
+  { path: "/toasts", label: "Toasts & Notifications", icon: Bell },
   { path: "/upload-download", label: "Upload & Download", icon: UploadCloud },
   { path: "/sample-pages", label: "Sample Pages", icon: UserCircle },
   { path: "/advanced-ui", label: "Advanced UI", icon: Wand2 },
@@ -89,6 +96,7 @@ export default function Layout() {
 
   const displayNavItems = [...navItems];
   if (isAdmin) {
+    displayNavItems.push({ path: "/ag-grid", label: "AG Grid", icon: Grid });
     displayNavItems.push({ path: "/admin", label: "Admin", icon: ShieldCheck });
   }
 

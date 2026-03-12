@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 export default function AdvancedUI() {
   const [dynamicId, setDynamicId] = useState("dynamic-id-123");
-  const [shadowContent, setShadowContent] = useState("");
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
@@ -14,77 +13,6 @@ export default function AdvancedUI() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    // Create shadow DOM
-    const host = document.getElementById("shadow-host");
-    if (host && !host.shadowRoot) {
-      const shadow = host.attachShadow({ mode: "open" });
-      const style = document.createElement("style");
-      
-      // Check if system is in dark mode
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      
-      style.textContent = `
-        .shadow-container {
-          padding: 1rem;
-          background-color: ${isDarkMode ? '#1e293b' : '#f8fafc'};
-          border: 1px solid ${isDarkMode ? '#334155' : '#e2e8f0'};
-          border-radius: 0.5rem;
-          font-family: system-ui, sans-serif;
-          color: ${isDarkMode ? '#f1f5f9' : '#0f172a'};
-        }
-        .shadow-input {
-          width: 100%;
-          padding: 0.5rem;
-          margin-top: 0.5rem;
-          border: 1px solid ${isDarkMode ? '#475569' : '#cbd5e1'};
-          border-radius: 0.25rem;
-          background-color: ${isDarkMode ? '#0f172a' : '#ffffff'};
-          color: ${isDarkMode ? '#ffffff' : '#000000'};
-          box-sizing: border-box;
-        }
-        .shadow-button {
-          margin-top: 0.5rem;
-          padding: 0.5rem 1rem;
-          background-color: #4f46e5;
-          color: white;
-          border: none;
-          border-radius: 0.25rem;
-          cursor: pointer;
-        }
-        .shadow-button:hover {
-          background-color: #4338ca;
-        }
-      `;
-
-      const container = document.createElement("div");
-      container.className = "shadow-container";
-
-      const label = document.createElement("label");
-      label.textContent = "Enter text in Shadow DOM:";
-
-      const input = document.createElement("input");
-      input.id = "shadow-input";
-      input.className = "shadow-input";
-      input.type = "text";
-
-      const button = document.createElement("button");
-      button.id = "shadow-button";
-      button.className = "shadow-button";
-      button.textContent = "Submit";
-      button.onclick = () => {
-        setShadowContent(input.value);
-      };
-
-      container.appendChild(label);
-      container.appendChild(input);
-      container.appendChild(button);
-
-      shadow.appendChild(style);
-      shadow.appendChild(container);
-    }
-  }, []);
-
   return (
     <div className="space-y-8">
       <div>
@@ -92,8 +20,7 @@ export default function AdvancedUI() {
           Advanced UI Features
         </h1>
         <p className="text-slate-600 dark:text-slate-400 mt-2">
-          Tackle complex scenarios like Shadow DOM, dynamic IDs, and custom
-          components.
+          Tackle complex scenarios like dynamic IDs and custom components.
         </p>
       </div>
 
@@ -122,26 +49,8 @@ export default function AdvancedUI() {
           </button>
         </div>
 
-        {/* Shadow DOM */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
-          <h2 className="text-xl font-semibold mb-4 dark:text-white">Shadow DOM</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-            Interact with elements hidden inside a Shadow Root.
-          </p>
-
-          <div id="shadow-host" className="mb-4"></div>
-
-          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[3rem]">
-            <p id="shadow-result" className="text-slate-700 dark:text-slate-300 font-medium">
-              {shadowContent
-                ? `Submitted: ${shadowContent}`
-                : "Result will appear here"}
-            </p>
-          </div>
-        </div>
-
         {/* Star Rating (Custom Component) */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 md:col-span-2">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
           <h2 className="text-xl font-semibold mb-4 dark:text-white">Star Rating</h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             Interact with a custom UI component that doesn't use standard

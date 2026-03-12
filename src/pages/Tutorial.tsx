@@ -106,6 +106,87 @@ const Lesson9Element = () => {
   );
 };
 
+const Lesson10Element = () => {
+  const [dropped, setDropped] = useState(false);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-8">
+      <div 
+        id="tutorial-draggable" 
+        draggable 
+        onDragStart={(e) => e.dataTransfer.setData('text/plain', 'dragged')}
+        className="w-24 h-24 bg-indigo-500 rounded-lg flex items-center justify-center text-white font-medium cursor-move shadow-md"
+      >
+        Drag Me
+      </div>
+      <div 
+        id="tutorial-droppable" 
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          e.preventDefault();
+          if (e.dataTransfer.getData('text/plain') === 'dragged') {
+            setDropped(true);
+          }
+        }}
+        className={`w-32 h-32 border-2 border-dashed rounded-lg flex items-center justify-center transition-colors ${dropped ? 'bg-emerald-100 border-emerald-500 dark:bg-emerald-900/30 dark:border-emerald-400' : 'bg-slate-50 border-slate-300 dark:bg-slate-900/50 dark:border-slate-600'}`}
+      >
+        {dropped ? (
+          <span className="text-emerald-600 dark:text-emerald-400 font-medium">Dropped!</span>
+        ) : (
+          <span className="text-slate-500 dark:text-slate-400">Drop Here</span>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const Lesson11Element = () => {
+  const [fileName, setFileName] = useState<string | null>(null);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700">
+      <label htmlFor="tutorial-file-upload" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Upload your resume</label>
+      <input 
+        id="tutorial-file-upload" 
+        type="file" 
+        onChange={(e) => {
+          if (e.target.files && e.target.files.length > 0) {
+            setFileName(e.target.files[0].name);
+          }
+        }}
+        className="block w-full text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 dark:file:bg-indigo-900/30 dark:file:text-indigo-400"
+      />
+      {fileName && (
+        <p className="mt-2 text-emerald-600 dark:text-emerald-400 text-sm font-medium">
+          File selected: {fileName}
+        </p>
+      )}
+    </div>
+  );
+};
+
+const Lesson12Element = () => {
+  const [alertHandled, setAlertHandled] = useState(false);
+  return (
+    <div className="my-4 p-4 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-700 flex items-center gap-4">
+      <button 
+        id="tutorial-alert-btn" 
+        className="px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-colors" 
+        onClick={() => {
+          if (window.confirm('Are you sure you want to proceed?')) {
+            setAlertHandled(true);
+          }
+        }}
+      >
+        Trigger Confirm Alert
+      </button>
+      {alertHandled && (
+        <span className="text-emerald-600 dark:text-emerald-400 font-medium animate-in fade-in duration-300">
+          Alert accepted!
+        </span>
+      )}
+    </div>
+  );
+};
+
 const formLessons = [
   {
     id: 'textbox',
@@ -425,6 +506,90 @@ WebUI.closeBrowser()`
   }
 ];
 
+const advancedLessons = [
+  {
+    id: 'drag-and-drop',
+    title: 'Challenge 10: Drag and Drop',
+    description: 'Learn how to perform a drag and drop action between two elements.',
+    element: <Lesson10Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge10 = new TestObject()
+challenge10.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 10: Drag and Drop')]")
+WebUI.click(challenge10)
+
+def draggable = new TestObject()
+draggable.addProperty('xpath', ConditionType.EQUALS, "//div[@id='tutorial-draggable']")
+
+def droppable = new TestObject()
+droppable.addProperty('xpath', ConditionType.EQUALS, "//div[@id='tutorial-droppable']")
+
+WebUI.dragAndDropToObject(draggable, droppable)
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  },
+  {
+    id: 'file-upload',
+    title: 'Challenge 11: File Upload',
+    description: 'Learn how to upload a file using the file input element.',
+    element: <Lesson11Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge11 = new TestObject()
+challenge11.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 11: File Upload')]")
+WebUI.click(challenge11)
+
+def fileUpload = new TestObject()
+fileUpload.addProperty('xpath', ConditionType.EQUALS, "//input[@id='tutorial-file-upload']")
+
+// Note: Replace the file path with an actual path on your machine
+WebUI.uploadFile(fileUpload, 'C:\\\\path\\\\to\\\\your\\\\file.txt')
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  },
+  {
+    id: 'handling-alerts',
+    title: 'Challenge 12: Handling Alerts',
+    description: 'Learn how to handle browser confirmation alerts.',
+    element: <Lesson12Element />,
+    script: `import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
+WebUI.openBrowser('https://brandonchan-tokamak.github.io/qaautomationplayground/#/tutorial')
+WebUI.maximizeWindow()
+
+def challenge12 = new TestObject()
+challenge12.addProperty('xpath', ConditionType.EQUALS, "//h3[contains(text(), 'Challenge 12: Handling Alerts')]")
+WebUI.click(challenge12)
+
+def alertBtn = new TestObject()
+alertBtn.addProperty('xpath', ConditionType.EQUALS, "//button[@id='tutorial-alert-btn']")
+WebUI.click(alertBtn)
+
+WebUI.verifyAlertPresent(5)
+WebUI.acceptAlert()
+
+WebUI.delay(3)
+
+WebUI.closeBrowser()`
+  }
+];
+
 const lessonCategories = [
   {
     title: "Forms",
@@ -433,6 +598,10 @@ const lessonCategories = [
   {
     title: "Mouse Clicks",
     lessons: mouseClickLessons
+  },
+  {
+    title: "Handling Interactions",
+    lessons: advancedLessons
   }
 ];
 
