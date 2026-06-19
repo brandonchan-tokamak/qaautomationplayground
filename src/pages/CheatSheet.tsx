@@ -127,7 +127,7 @@ WebUI.click(myElement)`}
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-slate-700">
           {/* Wrong Hard Wait */}
           <div className="p-6 bg-slate-900">
-            <h3 className="text-rose-400 font-semibold mb-4 flex items-center gap-2">
+            <h3 className="text-rose-400 font-semibold mb-8 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-rose-500"></span>
               Wrong Hard Wait
             </h3>
@@ -162,7 +162,7 @@ await page.locator('.button-active').click();`}
 
           {/* Better Smart Wait */}
           <div className="p-6 bg-slate-900">
-            <h3 className="text-emerald-400 font-semibold mb-4 flex items-center gap-2">
+            <h3 className="text-emerald-400 font-semibold mb-8 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
               Better Smart Wait
             </h3>

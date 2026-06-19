@@ -21,13 +21,15 @@ import {
   Calendar,
   GripHorizontal,
   Bell,
-  Grid
+  Grid,
+  Sparkles
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { trackPageView, trackUserVisit, trackClick, isAdminLoggedIn } from "../utils/tracking";
 
 const navItems = [
   { path: "/", label: "Home", icon: Home },
+  { path: "/self-healing", label: "Demo - Self Healing", icon: Sparkles },
   { path: "/cheat-sheet", label: "Cheat Sheet", icon: Code },
   { path: "/tutorial", label: "Challenge", icon: Trophy },
   { path: "/tables", label: "Tables", icon: Table },

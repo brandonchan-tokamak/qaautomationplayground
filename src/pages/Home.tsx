@@ -18,10 +18,18 @@ import {
   Calendar,
   GripHorizontal,
   Bell,
-  Grid
+  Grid,
+  Sparkles
 } from "lucide-react";
 
 const categories = [
+  {
+    path: "/self-healing",
+    label: "Demo - Self Healing",
+    description: "Interactive elements designated for testing self-healing automation rules.",
+    icon: Sparkles,
+    color: "bg-indigo-600",
+  },
   {
     path: "/tutorial",
     label: "Challenge",
